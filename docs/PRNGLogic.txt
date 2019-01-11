@@ -1,0 +1,24 @@
+Modulis neparedz iepriekšējās vērtības glabāšanu gadījumam, lai neatkārtojas nejaušs skaitlis divkārt.
+
+Tulkošanas tabula:
+Sāk.    Dec.    Rnd.    Dec.
+ABCD            CDAB    
+0000    0       0000    0
+0001    1       0100    4
+0010    2       1000    8
+0011    3       1100    12
+0100    4       0001    1
+0101    5       0101    5
+0110    6       1001    9
+0111    7       1101    13
+1000    8       0010    2
+1001    9       0110    6
+1010    10      1010    10
+1011    11      1110    14
+1100    12      0011    3
+1101    13      0111    7
+1110    14      1011    11
+1111    15      1111    15
+
+Lielākai variācijai ik pēc 3. iterācijām pieskaitīšana MC netiek veikta, bet tā vietā tiek piefiksēts !MC. !MC režīmā izskatās, ka pēkšņi no pretējā gala sāk skaitīt otrādi. Šādi apvienojot uz priekšu skaitīšanu un atpakaļskaitīšanu "strīpoti" pārklāj abus skaitīšanas virzienus, kas būtiski palielina nejaušo skaitļu virkni. Skaitli jebkurā no stadijām varētu vēl ietekmēt ar lietotāja ievadu, un, piemēram, pielietot "register shift", pieskaitīt vai atņemt nedalāmu skaitli nobīdei.
+Kaut vai algoritms ir būvēts, lai arī ar vienu cikla gājienu radītu šķietami nejaušu skaitli, zinot vai pētot tā uzbūvi, tas joprojām ir paredzams. Šim nolūkam vienkāršākais risinājums ir sasaistīt lietotāja apstiprinājuma pogu ar ģeneratora "on/off" vadu, jo lietotājs nebūs spējīgs trāpīt tieši vienā ciklā. Ideāli tas būtu darāms caur spēles loģikas moduli.

@@ -1,0 +1,59 @@
+Uzdevuma apraksts:
+Kā kursa projekts ir realizējama skaitīšanas sistēmu spēle, kur spēlētājam ir jāievada uz Xilinx Spartan 3E iebūvēta LCD ekrānā redzamais decimālais skaitlis ar iebūvētajiem slēdžiem binārajā sistēmā ar laika ierobežojumu. Ieslēdzot iekārtu, uz ekrāna tiek izvadīta spēles sākšanas izvēlne, kuru apstirpinot tiek uzsākta spēle. Spēles gaitā uz ekrāna tiek izdrukāts nejauši ģenerēts skaitlis decimālajā sistēmā no 1 līdz 15, kuru lietotājs ievada ar iekārtas labās puses 4 slēdžiem, kas reprezentē atbilstošu 4 bitu bināro skaitli, un to apstiprina ar pogu. Ja minējums ir veiksmīgs, tas ir, izvadītais atbilst ievadītajam, spēle ziņo par veiksmīgu rezultātu un pāriet uz jaunu līmeni, kam ir mazināts minējuma laika ierobežojums. Šādi spēle turpina progresēt bezgalīgi, līdz spēlētājs zaudē. Spēlētājs zaudē līdz ar laika ierobežojuma beigām, arī par nepareizu minējumu spēlētājam dotais laiks tiek samazināts. Spēles gaitā spēlētājam šis laika ierobežojums ir redzams uz ekrāna.
+Spēles sistēmas implementācijā tiek dalīta smalkākos moduļos, kur katrs modulis kalpo kā neatkarīga funkcija ar ievadiem un izvadiem. Spēles darbībai tiek ieviesti šādi moduļi:
+
+Taimera modulis:
+Apraksts - Pārveido sistēmas pulksteni par uzstādāmu taimeri sekundēs. Ievados ir sistēmas frekvence, iestatīšanas karogs, iestatīšanas vērtība. Izvados ir laiks sekundēs un karogs, kas ziņo par <= 0 atlikušo laiku.
+Ievadi - CLK, SET_F, SET_V
+Izvadi - TIME, END_F
+Atbildīgā persona - Dāgs Grīnbergs
+
+Salīdzinātāja modulis:
+Apraksts - Salīdzina divus skaitļus. Izvada loģisko "1", ja tie sakrīt. Paredzēts lietošanai 4 bitu skaitļiem, konkrēti, ievadslēdžu un ģenerētā skaitļa salīdzināšanai.
+Ievadi - NUM_1, NUM_2
+Izvadi - MATCH
+Atbildīgā persona - 
+
+Ģenerātora modulis:
+Apraksts - Veido pseido-nejaušus 4 bitu skaitļus. Pēc atslēgšanas uztur pēdējā nejaušā skaitļa vērtību. Skaitļus ģenerē balstoties uz sistēmas pulksteni.
+Ievadi - CLK, ENABLE
+Izvadi - G_NUM
+Atbildīgā persona - Mārtiņš Kurmis
+
+Spēles modulis:
+Apraksts - Nodrošina spēles loģiku - spēles stāvokli, līmeni, skaitļa minēšanu, zaudēšanu. Ievadā minēšanas poga, salīdzinājuma rezultāts, laika karogs. Izvadā spēles stāvoklis, līmenis, taimera iestatīšana.
+Ievadi - GUESS_B, CMP_R, END_F
+Izvadi - STATE, LEVEL, SET_F, SET,V
+Atbildīgā persona - 
+
+Displeja modulis: 
+Apraksts - Displeja "draiveris", atkarībā no spēles stadijas nodrošina nepieciešamo informāciju. Atbild arī par citām izvades metodēm, tai skaitā gaismas diodēm. Ievadā spēles stāvoklis, ģenerētais skaitlis, atlikušais laiks, līmenis.
+Ievadi - STATE, G_NUM, TIME, LEVEL
+Izvadi - (Platformas specifiskie izvadi uz iekārtām, kopnes datu sūtīšanai)
+Atbildīgā persona -  Mārtiņš Osmanis
+
+
+
+Spēles loģika paredz vairākus spēles stāvokļus, kas kontrolē spēles gaitu. Katram stāvoklim ir atšķirīga LCD izdruka. Tie tiek enumurēti šādi:
+0: Apraksts - Sākumstāvoklis. Izvada sasveicināšanās logu. Lietotājs no šī stāvokļa var sākt spēli piespiežot akcepta pogu. 0->1.
+LCD:
+" BinToDec Spele "
+"<Sakt           "
+
+1: Apraksts - Lietotāja gatavības apstiprināšana. Uzrāda pašreizējo līmeni (aizstāj X izdrukā). Funkcionāls mērķis - spēles modulim padot ģenerātoram vairāku ciklu ENABLE ilgumu no lietotāja apstiprinājuma. Pārslēdzas pogas atlaišanas brīdī (low). 1->2.
+LCD:
+"Nakamais lim. X "
+"<Sakt           "
+
+2: Apraksts - Galvenais spēles logs. Spēles modulis iestata laiku (implementātora ziņā, par maksimālo laiku jāvienojas ar laika moduli) atkarībā no līmeņa (ieteicams min(totaltime-(2*līm),3), jeb atņem 2 sekundes katrā līmenī, līdz sasniedz minimālās 3 sekundes). Kļūdas gadījumu apstrāde ir atkarībā no implementācijas. Iestājoties zaudēšanas gadījumam (beidzas laiks, par kuru ziņo laika modulis), uzreiz pārlec uz 3. stāvokli. Pareizas atbildes gadījumā (salīdzinātājs ziņo un lietotājs ir apstiprinājis), inkrementē līmeņa mainīgo un pāriet uz 1. stāvokli. 
+LCD:
+"Dec X | Laiks T "
+"<OK   |  Ievads>"
+
+3: Apraksts - Spēles beigas. Ziņo lietotājam par zaudēšanu un sasniegto līmeni (izdrukā aizstāj X). Akcepta pogas gadījumā pārlec uz 0. stāvokli.
+LCD:
+"Speles beigas!  "
+"<OK    Punkti X "
+
+Piezīme: "Akcepta poga" ir viena vai vairākas pogas, kas atrodamas pa kreisi no ekrāna. Ir ieteicams lietot "BTN East" vai "BTN West" vienas pogas implementācijas gadījumā, to pievienojot 0. stāvokļa LCD izdrukai, piem., "<Sakt (BTN West)"
+Piezīme: "<" apzīmē 01101111 LCD simbolu, ">" apzīmē 01101110 simbolu (bultiņas pēc "Spartan-3E FPGA Starter Kit Board User Guide" Figure 5-4 "LCD Character Set").
