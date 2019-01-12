@@ -26,26 +26,24 @@ module Generators(
 	 input clk;
 	 input enable;
 	 output reg [0:3] result = 0;
-	 reg [0:3] m_count = 0;		// Galvenais skaitītājs (skat. kol A)
-	 reg [0:2] s_count = 0;		// Sekundārais skaitītājs (ik pēc 4 nosac.)
-	 reg [0:3] nm_count = 0;	// Rotētais (negatīvais) skaitītājs
-	 reg nflag = 0;							// Rotēšanas karogs
+	 // Iekomentētais kods strādā, pēc realizācijas atradu valodā iebūvētu funkciju...
+	 /*reg [0:3] m_count = 0;		// Galvenais skaitītājs (skat. kol A)
+	 reg [0:2] s_count = 0;		// Sekundārais skaitītājs (ik pēc 4 nosac.)*/
 	 
 	 always @ (posedge clk) begin
 		if(enable) begin
-			if(s_count != 4) begin
-				s_count <= s_count + 1;
-				m_count <= m_count + 1;
+			/*
+			if(s_count == 3 || s_count == 7) begin
+				m_count = ~m_count;
+			end 
+			if(s_count < 4) begin
+				m_count <= m_count +1;
 			end else begin
-				s_count <= 0;
-				nflag = ~nflag;
+				m_count <= m_count -1;
 			end
-			if(nflag) begin
-				nm_count <= !m_count;
-			else
-				nm_count <= m_count;
-			end
-			result <= nm_count;
+			s_count = s_count + 1;
+			result <= m_count << 2  | m_count >> 2; // 2 bitu samainīšana vietām*/
+			result <= $random%8;
 		end
 	end
 
