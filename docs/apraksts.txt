@@ -52,8 +52,8 @@ LCD:
 
 3: Apraksts - Spēles beigas. Ziņo lietotājam par zaudēšanu un sasniegto līmeni (izdrukā aizstāj X). Akcepta pogas gadījumā pārlec uz 0. stāvokli.
 LCD:
-"Speles beigas!  "
-"<OK    Punkti X "
+" Speles beigas! "
+"<OK   |Punkti X "
 
 Piezīme: "Akcepta poga" ir viena vai vairākas pogas, kas atrodamas pa kreisi no ekrāna. Ir ieteicams lietot "BTN East" vai "BTN West" vienas pogas implementācijas gadījumā, to pievienojot 0. stāvokļa LCD izdrukai, piem., "<Sakt (BTN West)"
 Piezīme: "<" apzīmē 01101111 LCD simbolu, ">" apzīmē 01101110 simbolu (bultiņas pēc "Spartan-3E FPGA Starter Kit Board User Guide" Figure 5-4 "LCD Character Set").
