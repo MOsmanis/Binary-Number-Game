@@ -38,8 +38,8 @@ module Timer(
 	);
 
 input      clk, set_f;
-input      [4:0] set_v;
-output reg [4:0] timeleft;
+input      [0:4] set_v;
+output reg [0:4] timeleft;
 output reg [0:0] end_f;
 integer    ticks, sys_freq;
 
