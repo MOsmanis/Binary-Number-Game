@@ -22,7 +22,7 @@ Atbildīgā persona - Mārtiņš Kurmis
 
 Spēles loģikas modulis:
 Apraksts - Nodrošina spēles loģiku - spēles stāvokli, līmeni, skaitļa minēšanu, zaudēšanu. Ievadā minēšanas poga, salīdzinājuma rezultāts, laika karogs. Izvadā spēles stāvoklis, līmenis, taimera iestatīšana.
-Ievadi - GUESS_B, CMP_R, END_F
+Ievadi - BTN_OUT, CMP_R, END_F
 Izvadi - STATE, LEVEL, TIME_F, TIME_V
 Atbildīgā persona - Toms Mucenieks
 
