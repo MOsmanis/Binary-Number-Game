@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Toms Mucenieks
 // 
 // Create Date:    15:08:18 01/15/2019 
 // Design Name: 
@@ -20,12 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Speles_Logika(
 		guess_b, cmp_r, end_f,
-		state, level, set_f, set_v
+		state, level, set_f, set_v, number_f
     );
 	input guess_b, cmp_r, end_f;
 	output reg [0:1]state;
 	output reg [0:7]level;
-	output reg set_f; 
+	output reg set_f, number_f; 
 	output reg [0:4]set_v;
 	
 	reg [0:1]currentState;
@@ -46,6 +46,8 @@ module Speles_Logika(
 	 
 	 set_f = 0;
 	 set_v = 30;
+	 
+	 number_f = 0;
 	end
 	
 	always@(posedge guess_b) begin
@@ -62,6 +64,9 @@ module Speles_Logika(
 			if (calculatedTime > 3) set_v = calculatedTime;
 			else set_v = 3;
 			set_f = 1;
+			
+			//Generate number
+			number_f = 1;
 		end 
 		else if(currentState == 2) begin //Iegût rezultâtu
 			if(cmp_r && !end_f)
@@ -77,6 +82,9 @@ module Speles_Logika(
 			end
 		end
 		else if(currentState == 3) begin //Lûzeris
+			//Generate number
+			number_f = 0;
+		
 			currentState = 1;
 			state = 1;
 			

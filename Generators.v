@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: Komanda Alpha
-// Engineer: Mārtiņš Kurmis
+// Engineer: Mārtiņ� Kurmis
 // 
 // Create Date:    19:12:05 01/11/2019 
 // Design Name: 
@@ -51,7 +51,7 @@ module Generators(
 				m_count <= m_count -1;
 			end
 			s_count = s_count + 1;
-			result <= m_count << 2  | m_count >> 2; // 2 bitu samainīšana vietām
+			result <= m_count << 2  | m_count >> 2; // 2 bitu samainī�ana vietām
 		end
 	end*/
 

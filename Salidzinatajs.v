@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Toms Mucenieks
 // 
 // Create Date:    12:26:15 01/15/2019 
 // Design Name: 
