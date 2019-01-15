@@ -34,7 +34,7 @@ Atbildīgā persona -  Mārtiņš Osmanis
 
 Pogu modulis:
 Apraksts - Nodrošina apstiprinājuma pogu apvienošanu un debounce novēršanu.
-Ievadi - (Platformas specifiskās pogas, kas lietotas apstiprināšanai, BTN West, BTN East, etc.)
+Ievadi - CLK, (Platformas specifiskās pogas, kas lietotas apstiprināšanai, BTN West, BTN East, etc.)
 Izvadi - BTN_OUT
 Atbildīgā persona - Dāgs Grīnbergs
 
