@@ -25,7 +25,7 @@
 module Generators_Test;
 
 	// Inputs
-	reg clk;
+	//reg clk;
 	reg enable;
 
 	// Outputs
@@ -33,20 +33,22 @@ module Generators_Test;
 
 	// Instantiate the Unit Under Test (UUT)
 	Generators uut (
-		.clk(clk), 
+		//.clk(clk), 
 		.enable(enable), 
 		.result(result)
 	);
 
 	initial begin
 		// Initialize Inputs     
-		clk = 0;
+		enable = 0;
+		repeat(32) #10 enable = ~enable;
+		/*clk = 0;
 		enable = 1;
 		repeat(32) #10 clk = ~clk;
 		enable = 0; // Izslēgta moduļa vērtības uzturēšanas tests
 		repeat(8) #10 clk = ~clk;
 		enable = 1;
-		repeat(128) #10 clk = ~clk;
+		repeat(128) #10 clk = ~clk;*/
 	end
       
 endmodule
