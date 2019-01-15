@@ -1,0 +1,31 @@
+--- LU::poster-howto
+Mērķis (morāle): Izklāstīt par kursa projekta izveidoto spēli "BinToDec", jeb "Binary Number Game".
+
+[Virsraksts] "BinToDec (Bināro skaitļu minēšanas spēle)" Cik ātri spēsi pārveidot?
+Komanda Alpha:
+Dāgs Grīnbergs
+Mārtiņš Kurmis
+Mārtiņš Osmanis
+Toms Mucinieks
+
+Motivācija - Palīdzēt nozares iesācējiem apgūt vai trenēties decimālu skaitļu pārveidošanu uz bināro skaitīšanas sistēmu.
+Pamatojums - Šāda tipa spēles jau pastāv, bet reti kura izmanto fiziskus ievadus.
+Pieeja - [moduļu shēma]
+
+
+--- Reālais teksts
+Cik ātri spēsi pārveidot?
+Šī skaitīšanas sistēmu spēle ir paredzēta nozares iesācējiem apgūt, vai nostiprināt, zināšanas skaitīšanas sistēmu pārveidošanā. Spēlētājam tiek dots decimāla skaitlis no 0 līdz 15 un laika limits sekundēs. Vai varēsi izdomāt atbilstošu skaitļa bināru 4-bitu reprezentāciju? Līdzīgas spēles jau pastāv, bet reti kura paredz reālas, tam noprogrammētas, iekārtas izmantošanu ar fiziskiem ievadiem un klasisku monohroma ekrānu.
+
+Lietotāja pamācība
+Sākumstāvoklis. Izvada sasveicināšanās logu. Lietotājs no šī stāvokļa var sākt spēli piespiežot akcepta pogu.
+Lietotāja gatavības apstiprināšana. Uzrāda pašreizējo līmeni.
+Galvenais spēles logs. Lietotājs ievada skaitli ar slēdžiem labajā pusē un to apstiprina.
+Spēles beigas. Ziņo lietotājam par zaudēšanu un sasniegto līmeni.
+
+Rezultāts
+Aizraujoša spēle, kas trenē spēlētāja aritmētikas spējas un paplašina izpratni par bināro sistēmu.
+
+Secinājumi
+Verilog ļauj programmētājiem saprotamā valodā aprakstīt vēlamo aparatūru, kas ir viegli implementājam lietošanai uz reāla FPGA. Izstrādātā sistēma ir modulāra, kas ļauj vieglu darbības pielāgošanu uz citām iekārtām, vai arī funkcionalitātes papildināšanu. Spēli, ar relatīvi nelielām izmaiņām, varētu pielāgot arī citām skaitīšanas sistēmām, atbalstīt papildus ievadus vai izvadus, vai arī definēt plašākus spēles nosacījumus.
+
