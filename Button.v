@@ -38,7 +38,7 @@ reg [18:0] counter = 0;
 //[1]-patiesais stāvoklis
 reg [1:0] btn_delay = 0;
 // pogas nostādināšanās laiks (pulksteņa ciklu skaits) 500000 jeb 10ms
-reg [18:0] stl_time = 8'b01111010000100100000;
+	reg [18:0] stl_time = 19'b01111010000100100000;
 // skaitīšanas karogs
 reg cf = 0;
 
