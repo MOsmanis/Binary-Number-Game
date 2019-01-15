@@ -4,7 +4,7 @@ Spēles sistēmas implementācijā tiek dalīta smalkākos moduļos, kur katrs m
 
 Taimera modulis:
 Apraksts - Pārveido sistēmas pulksteni par uzstādāmu taimeri sekundēs. Ievados ir sistēmas frekvence, iestatīšanas karogs, iestatīšanas vērtība. Izvados ir laiks sekundēs un karogs, kas ziņo par <= 0 atlikušo laiku.
-Ievadi - CLK, SET_F, SET_V
+Ievadi - CLK, TIME_F, TIME_V
 Izvadi - TIME, END_F
 Atbildīgā persona - Dāgs Grīnbergs
 
@@ -12,25 +12,31 @@ Salīdzinātāja modulis:
 Apraksts - Salīdzina divus skaitļus. Izvada loģisko "1", ja tie sakrīt. Paredzēts lietošanai 4 bitu skaitļiem, konkrēti, ievadslēdžu un ģenerētā skaitļa salīdzināšanai.
 Ievadi - NUM_1, NUM_2
 Izvadi - MATCH
-Atbildīgā persona - 
+Atbildīgā persona - Toms Mucenieks
 
 Ģenerātora modulis:
-Apraksts - Veido pseido-nejaušus 4 bitu skaitļus. Pēc atslēgšanas uztur pēdējā nejaušā skaitļa vērtību. Skaitļus ģenerē balstoties uz sistēmas pulksteni.
-Ievadi - CLK, ENABLE
+Apraksts - Veido pseido-nejaušus 4 bitu skaitļus. Pēc atslēgšanas uztur pēdējā nejaušā skaitļa vērtību. Paredz skaitļu neatkārtošanos pēc katras iespējošanas reizes.
+Ievadi - ENABLE
 Izvadi - G_NUM
 Atbildīgā persona - Mārtiņš Kurmis
 
-Spēles modulis:
+Spēles loģikas modulis:
 Apraksts - Nodrošina spēles loģiku - spēles stāvokli, līmeni, skaitļa minēšanu, zaudēšanu. Ievadā minēšanas poga, salīdzinājuma rezultāts, laika karogs. Izvadā spēles stāvoklis, līmenis, taimera iestatīšana.
 Ievadi - GUESS_B, CMP_R, END_F
-Izvadi - STATE, LEVEL, SET_F, SET,V
-Atbildīgā persona - 
+Izvadi - STATE, LEVEL, TIME_F, TIME_V
+Atbildīgā persona - Toms Mucenieks
 
 Displeja modulis: 
 Apraksts - Displeja "draiveris", atkarībā no spēles stadijas nodrošina nepieciešamo informāciju. Atbild arī par citām izvades metodēm, tai skaitā gaismas diodēm. Ievadā spēles stāvoklis, ģenerētais skaitlis, atlikušais laiks, līmenis.
 Ievadi - STATE, G_NUM, TIME, LEVEL
 Izvadi - (Platformas specifiskie izvadi uz iekārtām, kopnes datu sūtīšanai)
 Atbildīgā persona -  Mārtiņš Osmanis
+
+Pogu modulis:
+Apraksts - Nodrošina apstiprinājuma pogu apvienošanu un debounce novēršanu.
+Ievadi - (Platformas specifiskās pogas, kas lietotas apstiprināšanai, BTN West, BTN East, etc.)
+Izvadi - BTN_OUT
+Atbildīgā persona - Dāgs Grīnbergs
 
 
 
@@ -40,7 +46,7 @@ LCD:
 " BinToDec Spele "
 "<Sakt           "
 
-1: Apraksts - Lietotāja gatavības apstiprināšana. Uzrāda pašreizējo līmeni (aizstāj X izdrukā). Funkcionāls mērķis - spēles modulim padot ģenerātoram vairāku ciklu ENABLE ilgumu no lietotāja apstiprinājuma. Pārslēdzas pogas atlaišanas brīdī (low). 1->2.
+1: Apraksts - Lietotāja gatavības apstiprināšana. Uzrāda pašreizējo līmeni (aizstāj X izdrukā). Pārslēdzas pogas atlaišanas brīdī (low). 1->2.
 LCD:
 "Nakamais lim. X "
 "<Sakt           "
