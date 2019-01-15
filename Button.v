@@ -19,7 +19,7 @@
 //		Testēšanai, nostādināšanās laiku var likt daudz mazāku
 //////////////////////////////////////////////////////////////////////////////////
 module Button(
-	 clk,
+    	clk,
     btn_north,
     btn_east,
     btn_south,
@@ -38,7 +38,7 @@ reg [18:0] counter = 0;
 //[1]-patiesais stāvoklis
 reg [1:0] btn_delay = 0;
 // pogas nostādināšanās laiks (pulksteņa ciklu skaits) 500000 jeb 10ms
-reg [18:0] stl_time = 8'b01111010000100100000;
+	reg [18:0] stl_time = 19'b01111010000100100000;
 // skaitīšanas karogs
 reg cf = 0;
 
@@ -51,15 +51,11 @@ always @ (posedge clk) begin
 		btn_delay[0] = btn_delay[1];
 		// iestāda skaitīšanu
 		cf = 1;
-	// ja sagaidītais stāvoklis sakrīt ar patieso, tad jāturpina skaitīt
 	end
-	// ja skaitīšana jāturpina
-	if (cf == 1) begin
-		// ja skaitītājs nav pārsniedzis pogas nostādināšanās laiku
-		if (counter < stl_time) begin
-			// skaita līdz nostādināšanās ilgumam
-			counter = counter + 1'b1;
-		end
+	// ja skaitīšana jāturpina un nav sasniegts nostādināšanās ilgums
+	if ((cf == 1) && (counter < stl_time)) begin
+		// skaita līdz nostādināšanās ilgumam
+		counter = counter + 1'b1;
 	end
 	// ja ievads ir gana ilgi bijis stabils un stāvokļi vēl projām sakrīt, un notiek skaitīšana
 	if ((counter == stl_time) && ((btn_delay == 2'b00) || (btn_delay == 2'b11)) && cf == 1) begin
