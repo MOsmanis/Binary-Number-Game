@@ -16,52 +16,55 @@
 // Revision: 
 // Revision 0.01 - File Created
 // Additional Comments: 
-//		Testē�anai, nostādinā�anās laiku var likt daudz mazāku
+//		Testēšanai, nostādināšanās laiku var likt daudz mazāku
 //////////////////////////////////////////////////////////////////////////////////
 module Button(
     	clk,
     btn_north,
+    btn_east,
+    btn_south,
+    btn_west,
     btn_out
     );
 	 
 input clk;
-input btn_north;
+input btn_north, btn_east, btn_south, btn_west;
 output reg [0:0] btn_out = 1'b0;
-	 
-// skaitītājs. pietieko�i ietilpīgs, lai ietvertu pogas stāvokļa nostādinā�anās laiku.
+
+// skaitītājs. pietiekoši ietilpīgs, lai ietvertu pogas stāvokļa nostādināšanās laiku.
 reg [18:0] counter = 0;
-// pogas stāvokļa nolasī�anas aiztures mainīgais
+// pogas stāvokļa nolasīšanas aiztures mainīgais
 //[0]-sagaidītais stāvoklis
 //[1]-patiesais stāvoklis
 reg [1:0] btn_delay = 0;
-// pogas nostādinā�anās laiks (pulksteņa ciklu skaits) 500000 jeb 10ms
-	reg [18:0] stl_time = 19'b01111010000100100000;
-// skaitī�anas karogs
+// pogas nostādināšanās laiks (pulksteņa ciklu skaits) 500000 jeb 10ms
+	reg [18:0] stl_time = 19'b1111010000100100000;
+// skaitīšanas karogs
 reg cf = 0;
 
 always @ (posedge clk) begin
 	// atjaunina patieso stāvokli
-	btn_delay[1] = btn_north;
-	// ja patiesais stāvoklis at�ķiras no sagaidītā, jāuzsāk skaitī�ana
+	btn_delay[1] <= (btn_north || btn_east || btn_south || btn_west);
+	// ja patiesais stāvoklis atšķiras no sagaidītā, jāuzsāk skaitīšana
 	if (btn_delay[0] != btn_delay[1]) begin
 		// atjaunina sagaidīto stāvokli
-		btn_delay[0] = btn_delay[1];
-		// iestāda skaitī�anu
+		btn_delay[0] <= btn_delay[1];
+		// iestāda skaitīšanu
 		cf = 1;
 	end
-	// ja skaitī�ana jāturpina un nav sasniegts nostādinā�anās ilgums
+	// ja skaitīšana jāturpina un nav sasniegts nostādināšanās ilgums
 	if ((cf == 1) && (counter < stl_time)) begin
-		// skaita līdz nostādinā�anās ilgumam
+		// skaita līdz nostādināšanās ilgumam
 		counter = counter + 1'b1;
 	end
-	// ja ievads ir gana ilgi bijis stabils un stāvokļi vēl projām sakrīt, un notiek skaitī�ana
+	// ja ievads ir gana ilgi bijis stabils un stāvokļi vēl projām sakrīt, un notiek skaitīšana
 	if ((counter == stl_time) && ((btn_delay == 2'b00) || (btn_delay == 2'b11)) && cf == 1) begin
 		// reģistrē pogas stāvokļa nomaiņu
 		btn_out = ~btn_out;
-		// atiestāda skaitī�anu
+		// atiestāda skaitīšanu
 		cf = 0;
 		// restartē skaitītāju
-		counter = 19'b00000000000000000000;
+		counter = 19'b0000000000000000000;
 	end
 end
 endmodule
