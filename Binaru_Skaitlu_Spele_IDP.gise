@@ -244,7 +244,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1547675096" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="9082955642649164712" xil_pn:start_ts="1547675087">
+    <transform xil_pn:end_ts="1547678661" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="9082955642649164712" xil_pn:start_ts="1547678652">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -265,11 +265,11 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1547675096" xil_pn:in_ck="-580333106137177537" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-5090372668651336457" xil_pn:start_ts="1547675096">
+    <transform xil_pn:end_ts="1547678519" xil_pn:in_ck="-580333106137177537" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-5090372668651336457" xil_pn:start_ts="1547678519">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1547675100" xil_pn:in_ck="-8094912475444569252" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-6645396591616540296" xil_pn:start_ts="1547675096">
+    <transform xil_pn:end_ts="1547678665" xil_pn:in_ck="-8094912475444569252" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-6645396591616540296" xil_pn:start_ts="1547678661">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -279,7 +279,7 @@
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1547675103" xil_pn:in_ck="-8093380896459304802" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="-1309755933173654900" xil_pn:start_ts="1547675100">
+    <transform xil_pn:end_ts="1547678668" xil_pn:in_ck="-8093380896459304802" xil_pn:name="TRANEXT_map_spartan3" xil_pn:prop_ck="-1309755933173654900" xil_pn:start_ts="1547678665">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -293,7 +293,7 @@
       <outfile xil_pn:name="Binaru_Skaitlu_Spele_usage.xml"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1547675114" xil_pn:in_ck="-650304691979760880" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="-5563652517805085498" xil_pn:start_ts="1547675103">
+    <transform xil_pn:end_ts="1547678680" xil_pn:in_ck="-650304691979760880" xil_pn:name="TRANEXT_par_spartan3" xil_pn:prop_ck="-5563652517805085498" xil_pn:start_ts="1547678668">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -308,7 +308,7 @@
       <outfile xil_pn:name="Binaru_Skaitlu_Spele_par.xrpt"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
     </transform>
-    <transform xil_pn:end_ts="1547675121" xil_pn:in_ck="3114731046845919383" xil_pn:name="TRANEXT_bitFile_spartan3e" xil_pn:prop_ck="-7817169320884990698" xil_pn:start_ts="1547675114">
+    <transform xil_pn:end_ts="1547678687" xil_pn:in_ck="3114731046845919383" xil_pn:name="TRANEXT_bitFile_spartan3e" xil_pn:prop_ck="-7817169320884990698" xil_pn:start_ts="1547678680">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -326,14 +326,13 @@
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="_impact.cmd"/>
-      <outfile xil_pn:name="_impact.log"/>
-      <outfile xil_pn:name="_impactbatch.log"/>
-      <outfile xil_pn:name="ise_impact.cmd"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1547675121" xil_pn:in_ck="-3733773716724192981" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="1625391983371021156" xil_pn:start_ts="1547675121">
+    <transform xil_pn:end_ts="1547678687" xil_pn:in_ck="-3733773716724192981" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="1625391983371021156" xil_pn:start_ts="1547678687">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_impact.cmd"/>
@@ -341,7 +340,7 @@
       <outfile xil_pn:name="_impactbatch.log"/>
       <outfile xil_pn:name="ise_impact.cmd"/>
     </transform>
-    <transform xil_pn:end_ts="1547675114" xil_pn:in_ck="-8295549322514212202" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416187" xil_pn:start_ts="1547675112">
+    <transform xil_pn:end_ts="1547678680" xil_pn:in_ck="-8295549322514212202" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416187" xil_pn:start_ts="1547678678">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele.twr"/>

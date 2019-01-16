@@ -22,7 +22,8 @@ module Binaru_Skaitlu_Spele(
 	IN_GLOBAL_clk, 
 	IN_GLOBAL_switch, 
 	IN_GLOBAL_button_north,
-	TEST_LEDS,
+	STATE_TEST_LEDS,
+	GENERATOR_TEST_LEDS,
 	OUT_DISPLAY_sf_e,
 	OUT_DISPLAY_e,
 	OUT_DISPLAY_rs,
@@ -35,9 +36,7 @@ module Binaru_Skaitlu_Spele(
 	input IN_GLOBAL_clk;
 	input [3:0]IN_GLOBAL_switch;
 	input IN_GLOBAL_button_north;
-	reg IN_GLOBAL_button_west = 0;
-	reg IN_GLOBAL_button_south = 0; 
-	reg IN_GLOBAL_button_east = 0;
+	 
 	
 	wire [4:0]OUT_Timer_timeleft; 
 	wire OUT_Timer_end_f;
@@ -64,10 +63,12 @@ module Binaru_Skaitlu_Spele(
 	output OUT_DISPLAY_b;
 	output OUT_DISPLAY_a;
 	
-	output [7:0]TEST_LEDS = 0;
+	output [1:0]STATE_TEST_LEDS;
+	output [3:0]GENERATOR_TEST_LEDS;
 	
-	assign TEST_LEDS[7] = OUT_Logic_state[1]; 
-	assign TEST_LEDS[6] = OUT_Logic_state[0]; 
+	assign STATE_TEST_LEDS = OUT_Logic_state;
+	
+	assign GENERATOR_TEST_LEDS = OUT_Generator_result; 
 	
 	Timer Timer(
 		.clk(IN_GLOBAL_clk),

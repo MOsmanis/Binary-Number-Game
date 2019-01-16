@@ -20,13 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Button(
     	clk,
-    btn_north
+    btn_north,
     btn_out
     );
 	 
 input clk;
-input btn_north, btn_east, btn_south, btn_west;
-output reg [0:0] btn_out = 1'b0;
+input btn_north;
+output reg btn_out = 0;
 
 // skaitītājs. pietieko�i ietilpīgs, lai ietvertu pogas stāvokļa nostādinā�anās laiku.
 reg [18:0] counter = 0;

@@ -85,8 +85,7 @@ module Displejs(
 	 reg game_state_changed=0;
 	 integer i;
 	 always@(game_state)begin
-		game_state_changed<=0;
-		game_state_index <=0;
+		game_state_changed=1;
 	 end
 	 always@(posedge clk) begin
 			if(init_game_states)
