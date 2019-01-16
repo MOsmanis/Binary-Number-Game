@@ -73,6 +73,7 @@ module Binaru_Skaitlu_Spele(
    );
 	
 	Generators Generators(
+		.clk(IN_GLOBAL_clk),
 		.enable(OUT_Logic_g_enable),
 		.result(OUT_Generator_result)
    );
