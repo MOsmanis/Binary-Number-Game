@@ -92,12 +92,12 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="Button_pad.txt" xil_pn:subbranch="Par"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="Button_summary.html"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Button_xst.xrpt"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Generators_Test_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Generators_Test_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Generators_Test_isim_beh.wdb"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="Salidzinatajs.ngr"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Salidzinatajs_Test_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Speles_Logika_Test_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Speles_Logika_Test_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Speles_Logika_Test_isim_beh.wdb"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Speles_Logika_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_CMD" xil_pn:name="_impact.cmd"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="_impact.log"/>
@@ -133,13 +133,9 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1547668359" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1547668359">
+    <transform xil_pn:end_ts="1547680495" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1547680495">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele.v"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele_Test.v"/>
       <outfile xil_pn:name="Button.v"/>
@@ -154,27 +150,21 @@
       <outfile xil_pn:name="Speles_Logika_Test.v"/>
       <outfile xil_pn:name="Timer.v"/>
     </transform>
-    <transform xil_pn:end_ts="1547668414" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="2353775071314107824" xil_pn:start_ts="1547668414">
+    <transform xil_pn:end_ts="1547680495" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-7735609956149194056" xil_pn:start_ts="1547680495">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1547668414" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-2555963941621444110" xil_pn:start_ts="1547668414">
+    <transform xil_pn:end_ts="1547680495" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-6132459174342657798" xil_pn:start_ts="1547680495">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1547664925" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-1412322709745714252" xil_pn:start_ts="1547664925">
+    <transform xil_pn:end_ts="1547680495" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-6039904456926264331" xil_pn:start_ts="1547680495">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
-    <transform xil_pn:end_ts="1547668359" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1547668359">
+    <transform xil_pn:end_ts="1547680495" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1547680495">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele.v"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele_Test.v"/>
       <outfile xil_pn:name="Button.v"/>
@@ -189,30 +179,20 @@
       <outfile xil_pn:name="Speles_Logika_Test.v"/>
       <outfile xil_pn:name="Timer.v"/>
     </transform>
-    <transform xil_pn:end_ts="1547668416" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6268090358384410785" xil_pn:start_ts="1547668414">
+    <transform xil_pn:end_ts="1547680497" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6551633657276607697" xil_pn:start_ts="1547680495">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="Generators_Test_beh.prj"/>
-      <outfile xil_pn:name="Generators_Test_isim_beh.exe"/>
+      <outfile xil_pn:name="Speles_Logika_Test_beh.prj"/>
+      <outfile xil_pn:name="Speles_Logika_Test_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1547668416" xil_pn:in_ck="2060951876733563364" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-118421119236322747" xil_pn:start_ts="1547668416">
+    <transform xil_pn:end_ts="1547680497" xil_pn:in_ck="2060951876733563364" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="5867456757369634069" xil_pn:start_ts="1547680497">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="Generators_Test_isim_beh.wdb"/>
+      <outfile xil_pn:name="Speles_Logika_Test_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
     </transform>
@@ -283,6 +263,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele.pcf"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele_map.map"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele_map.mrp"/>
@@ -312,6 +294,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele.ut"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="binaru_skaitlu_spele.bgn"/>
@@ -332,9 +316,21 @@
       <status xil_pn:value="OutputChanged"/>
       <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1547678687" xil_pn:in_ck="-3733773716724192981" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="1625391983371021156" xil_pn:start_ts="1547678687">
+    <transform xil_pn:end_ts="1547680359" xil_pn:in_ck="-3733773716724192981" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="1625391983371021156" xil_pn:start_ts="1547680359">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="_impact.cmd"/>
+      <outfile xil_pn:name="_impact.log"/>
+      <outfile xil_pn:name="_impactbatch.log"/>
+      <outfile xil_pn:name="ise_impact.cmd"/>
+    </transform>
+    <transform xil_pn:end_ts="1547680358" xil_pn:in_ck="-3733773716724192981" xil_pn:name="TRAN_genImpactFile" xil_pn:prop_ck="533525620084911022" xil_pn:start_ts="1547680357">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_impact.cmd"/>
       <outfile xil_pn:name="_impact.log"/>
       <outfile xil_pn:name="_impactbatch.log"/>
