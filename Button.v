@@ -30,7 +30,7 @@ module Button(
 input clk;
 input btn_north, btn_east, btn_south, btn_west;
 output reg [0:0] btn_out = 1'b0;
-	 
+
 // skaitītājs. pietiekoši ietilpīgs, lai ietvertu pogas stāvokļa nostādināšanās laiku.
 reg [18:0] counter = 0;
 // pogas stāvokļa nolasīšanas aiztures mainīgais
@@ -38,17 +38,17 @@ reg [18:0] counter = 0;
 //[1]-patiesais stāvoklis
 reg [1:0] btn_delay = 0;
 // pogas nostādināšanās laiks (pulksteņa ciklu skaits) 500000 jeb 10ms
-	reg [18:0] stl_time = 19'b01111010000100100000;
+	reg [18:0] stl_time = 19'b1111010000100100000;
 // skaitīšanas karogs
 reg cf = 0;
 
 always @ (posedge clk) begin
 	// atjaunina patieso stāvokli
-	btn_delay[1] = (btn_north || btn_east || btn_south || btn_west);
+	btn_delay[1] <= (btn_north || btn_east || btn_south || btn_west);
 	// ja patiesais stāvoklis atšķiras no sagaidītā, jāuzsāk skaitīšana
 	if (btn_delay[0] != btn_delay[1]) begin
 		// atjaunina sagaidīto stāvokli
-		btn_delay[0] = btn_delay[1];
+		btn_delay[0] <= btn_delay[1];
 		// iestāda skaitīšanu
 		cf = 1;
 	end
@@ -64,7 +64,7 @@ always @ (posedge clk) begin
 		// atiestāda skaitīšanu
 		cf = 0;
 		// restartē skaitītāju
-		counter = 19'b00000000000000000000;
+		counter = 19'b0000000000000000000;
 	end
 end
 endmodule
