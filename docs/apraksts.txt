@@ -16,14 +16,14 @@ Atbildīgā persona - Toms Mucenieks
 
 Ģenerātora modulis:
 Apraksts - Veido pseido-nejaušus 4 bitu skaitļus. Pēc atslēgšanas uztur pēdējā nejaušā skaitļa vērtību. Paredz skaitļu neatkārtošanos pēc katras iespējošanas reizes.
-Ievadi - ENABLE
+Ievadi - G_ENABLE
 Izvadi - G_NUM
 Atbildīgā persona - Mārtiņš Kurmis
 
 Spēles loģikas modulis:
 Apraksts - Nodrošina spēles loģiku - spēles stāvokli, līmeni, skaitļa minēšanu, zaudēšanu. Ievadā minēšanas poga, salīdzinājuma rezultāts, laika karogs. Izvadā spēles stāvoklis, līmenis, taimera iestatīšana.
-Ievadi - GUESS_B, CMP_R, END_F
-Izvadi - STATE, LEVEL, TIME_F, TIME_V
+Ievadi - BTN_OUT, CMP_R, END_F
+Izvadi - STATE, LEVEL, TIME_F, TIME_V, G_ENABLE
 Atbildīgā persona - Toms Mucenieks
 
 Displeja modulis: 
@@ -34,7 +34,7 @@ Atbildīgā persona -  Mārtiņš Osmanis
 
 Pogu modulis:
 Apraksts - Nodrošina apstiprinājuma pogu apvienošanu un debounce novēršanu.
-Ievadi - (Platformas specifiskās pogas, kas lietotas apstiprināšanai, BTN West, BTN East, etc.)
+Ievadi - CLK, (Platformas specifiskās pogas, kas lietotas apstiprināšanai, BTN West, BTN East, etc.)
 Izvadi - BTN_OUT
 Atbildīgā persona - Dāgs Grīnbergs
 
