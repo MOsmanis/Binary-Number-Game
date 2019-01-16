@@ -26,8 +26,9 @@ module Speles_Logika_Test;
 	//OUTPUT
 	wire [0:1]state;
 	wire [0:7]level;
-	wire set_f; 
-	wire [0:4]set_v;
+	wire time_f; 
+	wire [0:4]time_v;
+	wire g_enable;
 
 	// Instantiate the Unit Under Test (UUT)
 	Speles_Logika uut(
@@ -38,8 +39,9 @@ module Speles_Logika_Test;
 		//OUTPUT
 		.state(state), 
 		.level(level), 
-		.set_f(set_f), 
-		.set_v(set_v)
+		.time_f(time_f), 
+		.time_v(time_v),
+		.g_enable(g_enable)
    );
 
 	initial begin

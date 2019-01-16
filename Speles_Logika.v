@@ -20,13 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Speles_Logika(
 		guess_b, cmp_r, end_f,
-		state, level, set_f, set_v, number_f
+		state, level, time_f, time_v, g_enable
     );
 	input guess_b, cmp_r, end_f;
 	output reg [0:1]state;
 	output reg [0:7]level;
-	output reg set_f, number_f; 
-	output reg [0:4]set_v;
+	output reg time_f, g_enable; 
+	output reg [0:4]time_v;
 	
 	reg [0:1]currentState;
 	reg [0:7]currentLevel;
@@ -44,10 +44,10 @@ module Speles_Logika(
 	 
 	 totalTime = 30;
 	 
-	 set_f = 0;
-	 set_v = 30;
+	 time_f = 0;
+	 time_v = 30;
 	 
-	 number_f = 0;
+	 g_enable = 0;
 	end
 	
 	always@(posedge guess_b) begin
@@ -61,12 +61,12 @@ module Speles_Logika(
 			
 			//Laika uzstâdîðana == min(totaltime-(2*lîm),3)
 			calculatedTime = totalTime - (2 * currentLevel);
-			if (calculatedTime > 3) set_v = calculatedTime;
-			else set_v = 3;
-			set_f = 1;
+			if (calculatedTime > 3) time_v = calculatedTime;
+			else time_v = 3;
+			time_f = 1;
 			
 			//Generate number
-			number_f = 1;
+			g_enable = 1;
 		end 
 		else if(currentState == 2) begin //Iegût rezultâtu
 			if(cmp_r && !end_f)
@@ -83,7 +83,7 @@ module Speles_Logika(
 		end
 		else if(currentState == 3) begin //Lûzeris
 			//Generate number
-			number_f = 0;
+			g_enable = 0;
 		
 			currentState = 1;
 			state = 1;

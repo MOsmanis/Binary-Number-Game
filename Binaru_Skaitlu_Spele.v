@@ -38,9 +38,9 @@ module Binaru_Skaitlu_Spele(
 	
 	wire [0:7]OUT_Logic_level;
 	wire [0:1]OUT_Logic_state; 
-	wire OUT_Logic_set_f;
-	wire [0:4]OUT_Logic_set_v;
-	wire OUT_Logic_number_f;
+	wire OUT_Logic_time_f;
+	wire [0:4]OUT_Logic_time_v;
+	wire OUT_Logic_g_enable;
 	
 	wire [0:3]OUT_Generator_result;
 	
@@ -50,8 +50,8 @@ module Binaru_Skaitlu_Spele(
 	
 	Timer Timer(
 		.clk(IN_GLOBAL_clk),
-		.set_f(OUT_Logic_set_f),
-		.set_v(OUT_Logic_set_v),
+		.time_f(OUT_Logic_time_f),
+		.time_v(OUT_Logic_time_v),
 		.timeleft(OUT_Timer_timeleft),
 		.end_f(OUT_Timer_end_f)
 	);
@@ -62,13 +62,13 @@ module Binaru_Skaitlu_Spele(
 		.end_f(OUT_Timer_end_f),
 		.state(OUT_Logic_state), 
 		.level(OUT_Logic_level), 
-		.set_f(OUT_Logic_set_f), 
-		.set_v(OUT_Logic_set_v),
-		.number_f(OUT_Logic_number_f)
+		.time_f(OUT_Logic_time_f), 
+		.time_v(OUT_Logic_time_v),
+		.g_enable(OUT_Logic_g_enable)
    );
 	
 	Generators Generators(
-		.enable(OUT_Logic_number_f),
+		.enable(OUT_Logic_g_enable),
 		.result(OUT_Generator_result)
    );
 
