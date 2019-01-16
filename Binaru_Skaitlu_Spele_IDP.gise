@@ -33,14 +33,17 @@
     <file xil_pn:fileType="FILE_VERILOG_INSTTEMPLATE" xil_pn:name="Binaru_Skaitlu_Spele.tfi"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="Binaru_Skaitlu_Spele.xst"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Binaru_Skaitlu_Spele_Test_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Binaru_Skaitlu_Spele_beh.prj"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="Binaru_Skaitlu_Spele_envsettings.html"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Binaru_Skaitlu_Spele_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Binaru_Skaitlu_Spele_isim_beh.wdb"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Binaru_Skaitlu_Spele_stx_beh.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Binaru_Skaitlu_Spele_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="Binaru_Skaitlu_Spele_summary.html"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Binaru_Skaitlu_Spele_xst.xrpt"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Button_Test_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Button_isim_beh.exe"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="Salidzinatajs.ngr"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Salidzinatajs_Test_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Salidzinatajs_Test_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Salidzinatajs_Test_isim_beh.wdb"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Speles_Logika_Test_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Speles_Logika_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
@@ -58,7 +61,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1547663761" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1547663761">
+    <transform xil_pn:end_ts="1547665405" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1547665405">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele.v"/>
@@ -75,23 +78,21 @@
       <outfile xil_pn:name="Speles_Logika_Test.v"/>
       <outfile xil_pn:name="Timer.v"/>
     </transform>
-    <transform xil_pn:end_ts="1547663272" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="8171479529815742028" xil_pn:start_ts="1547663272">
+    <transform xil_pn:end_ts="1547664925" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-7587550879419992281" xil_pn:start_ts="1547664925">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1547663272" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="8888003586069944718" xil_pn:start_ts="1547663272">
+    <transform xil_pn:end_ts="1547664925" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-6864749102885555415" xil_pn:start_ts="1547664925">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1547578249" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="8339537298035104602" xil_pn:start_ts="1547578249">
+    <transform xil_pn:end_ts="1547664925" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-1412322709745714252" xil_pn:start_ts="1547664925">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
-    <transform xil_pn:end_ts="1547663761" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1547663761">
+    <transform xil_pn:end_ts="1547665405" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1547665405">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele.v"/>
       <outfile xil_pn:name="Binaru_Skaitlu_Spele_Test.v"/>
       <outfile xil_pn:name="Button.v"/>
@@ -106,28 +107,77 @@
       <outfile xil_pn:name="Speles_Logika_Test.v"/>
       <outfile xil_pn:name="Timer.v"/>
     </transform>
-    <transform xil_pn:end_ts="1547663764" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-183045455457070151" xil_pn:start_ts="1547663761">
+    <transform xil_pn:end_ts="1547665407" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-219383845732049873" xil_pn:start_ts="1547665405">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="Binaru_Skaitlu_Spele_beh.prj"/>
-      <outfile xil_pn:name="Binaru_Skaitlu_Spele_isim_beh.exe"/>
+      <outfile xil_pn:name="Salidzinatajs_Test_beh.prj"/>
+      <outfile xil_pn:name="Salidzinatajs_Test_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1547663764" xil_pn:in_ck="7671456173782112605" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="9172663564633376317" xil_pn:start_ts="1547663764">
+    <transform xil_pn:end_ts="1547665407" xil_pn:in_ck="-1765382233590567908" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="820255620268362323" xil_pn:start_ts="1547665407">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="Binaru_Skaitlu_Spele_isim_beh.wdb"/>
+      <outfile xil_pn:name="Salidzinatajs_Test_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663893" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1547663893">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663893" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="8516784661020467342" xil_pn:start_ts="1547663893">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663893" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-1412322709745714252" xil_pn:start_ts="1547663893">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663893" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1547663893">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663893" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="8171479529815742028" xil_pn:start_ts="1547663893">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663893" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="-3893270297158069842" xil_pn:start_ts="1547663893">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663893" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-2658018236071692354" xil_pn:start_ts="1547663893">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663896" xil_pn:in_ck="1784665739933439335" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="932799509092860487" xil_pn:start_ts="1547663893">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
+      <outfile xil_pn:name="Binaru_Skaitlu_Spele.lso"/>
+      <outfile xil_pn:name="Binaru_Skaitlu_Spele.ngc"/>
+      <outfile xil_pn:name="Binaru_Skaitlu_Spele.ngr"/>
+      <outfile xil_pn:name="Binaru_Skaitlu_Spele.prj"/>
+      <outfile xil_pn:name="Binaru_Skaitlu_Spele.syr"/>
+      <outfile xil_pn:name="Binaru_Skaitlu_Spele.xst"/>
+      <outfile xil_pn:name="Binaru_Skaitlu_Spele_stx_beh.prj"/>
+      <outfile xil_pn:name="Binaru_Skaitlu_Spele_xst.xrpt"/>
+      <outfile xil_pn:name="Salidzinatajs.ngr"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1547663896" xil_pn:in_ck="-580333106137177537" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-5090372668651336457" xil_pn:start_ts="1547663896">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
     </transform>
   </transforms>
 

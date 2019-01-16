@@ -24,10 +24,10 @@ module Speles_Logika_Test;
 	reg guess_b, cmp_r, end_f;
 	
 	//OUTPUT
-	wire [0:1]state;
-	wire [0:7]level;
+	wire [1:0]state;
+	wire [7:0]level;
 	wire time_f; 
-	wire [0:4]time_v;
+	wire [4:0]time_v;
 	wire g_enable;
 
 	// Instantiate the Unit Under Test (UUT)

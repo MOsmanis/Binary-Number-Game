@@ -25,7 +25,15 @@ module Binaru_Skaitlu_Spele(
 	IN_GLOBAL_button_west,
 	IN_GLOBAL_button_south,
 	IN_GLOBAL_button_east,
-	TEST_STATE_OUT
+	TEST_STATE_OUT,
+	OUT_DISPLAY_sf_e,
+	OUT_DISPLAY_e,
+	OUT_DISPLAY_rs,
+	OUT_DISPLAY_rw,
+	OUT_DISPLAY_d,
+	OUT_DISPLAY_c,
+	OUT_DISPLAY_b,
+	OUT_DISPLAY_a
 );
 	input IN_GLOBAL_clk;
 	input [3:0]IN_GLOBAL_switch;
@@ -48,6 +56,16 @@ module Binaru_Skaitlu_Spele(
 	wire OUT_Match_match;
 	
 	wire OUT_Button_out;
+	
+	//Display
+	output OUT_DISPLAY_sf_e;
+	output OUT_DISPLAY_e;
+	output OUT_DISPLAY_rs;
+	output OUT_DISPLAY_rw;
+	output OUT_DISPLAY_d;
+	output OUT_DISPLAY_c;
+	output OUT_DISPLAY_b;
+	output OUT_DISPLAY_a;
 	
 	output TEST_STATE_OUT;
 	
@@ -96,6 +114,15 @@ module Binaru_Skaitlu_Spele(
 		.game_state(OUT_Logic_state),
 		.g_num(OUT_Generator_result),
 		.timeleft(OUT_Timer_timeleft),
-		.level(OUT_Logic_level)
-    );
+		.level(OUT_Logic_level),
+		.clk(IN_GLOBAL_clk),
+		.sf_e(OUT_DISPLAY_sf_e),
+		.e(OUT_DISPLAY_e),
+		.rs(OUT_DISPLAY_rs),
+		.rw(OUT_DISPLAY_rw),
+		.d(OUT_DISPLAY_d),
+		.c(OUT_DISPLAY_c),
+		.b(OUT_DISPLAY_b),
+		.a(OUT_DISPLAY_a)
+   );
 endmodule

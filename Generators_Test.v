@@ -29,7 +29,7 @@ module Generators_Test;
 	reg enable;
 
 	// Outputs
-	wire [0:3] result;
+	wire [3:0] result;
 
 	// Instantiate the Unit Under Test (UUT)
 	Generators uut (
@@ -45,7 +45,7 @@ module Generators_Test;
 		/*clk = 0;
 		enable = 1;
 		repeat(32) #10 clk = ~clk;
-		enable = 0; // Izslēgta moduļa vērtības uzturēšanas tests
+		enable = 0; // Izslēgta moduļa vērtības uzturē�anas tests
 		repeat(8) #10 clk = ~clk;
 		enable = 1;
 		repeat(128) #10 clk = ~clk;*/

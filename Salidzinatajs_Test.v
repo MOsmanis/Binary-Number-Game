@@ -21,8 +21,8 @@
 module Salidzinatajs_Test;
 
 	// Inputs
-	reg [0:3]num_1;
-	reg [0:3]num_2;
+	reg [3:0]num_1;
+	reg [3:0]num_2;
 
 	// Outputs
 	wire match;
@@ -39,7 +39,7 @@ module Salidzinatajs_Test;
 		num_1 = 4'b0000;
 		num_2 = 4'b1111;
 		#20
-		num_1 = 4'b0000;
+		num_1 = 2;
 		num_2 = 4'b0111;
 		#20
 		num_1 = 4'b0000;
