@@ -40,18 +40,18 @@ module Generators(
 	 end*/
 	 
 	 always @ (posedge clk) begin
-		c_count <= c_count + 1;
+		c_count = c_count + 1;
 		if(enable) begin
 			if(s_count == 3 || s_count == 7) begin
 				m_count = ~m_count;
 			end 
 			if(s_count < 4) begin
-				m_count <= m_count +1;
+				m_count = m_count +1;
 			end else begin
-				m_count <= m_count -1;
+				m_count = m_count -1;
 			end
 			s_count = s_count + 1;
-			result <= (m_count  << 2  | m_count >> 2) + c_count; // 2 bitu samainīana vietām
+			result = (m_count  << 2  | m_count >> 2) + c_count; // 2 bitu samainīana vietām
 		end
 	end
 	 

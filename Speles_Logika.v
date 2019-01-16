@@ -50,53 +50,54 @@ module Speles_Logika(
 	 g_enable = 0;
 	end
 	
-	always@(posedge guess_b) begin
-		if(currentState == 0) begin //Sveicinâti
-			currentState = 1;
-			state = 1;
-		end 
-		else if(currentState == 1) begin //Sâkt Spçli
-			currentState = 2;
-			state = 2;
-			
-			//Laika uzstâdîğana == min(totaltime-(2*lîm),3)
-			calculatedTime = totalTime - (2 * currentLevel);
-			if (calculatedTime > 3) time_v = calculatedTime;
-			else time_v = 3;
-			time_f = 1;
-			
-			//Generate number
-			g_enable = 1;
-		end 
-		else if(currentState == 2) begin //Iegût rezultâtu
-			if(cmp_r && !end_f)
-			begin //Pareizi un laiks nav beidzies.
-				currentLevel = currentLevel + 1;
-				level = currentLevel + 1;
-				
+	always@(posedge guess_b or posedge end_f) begin
+		if(guess_b) begin //Nospiesta poga
+			if(currentState == 0) begin //Sveicinâti
 				currentState = 1;
 				state = 1;
-			end else begin //Nepareizi 
-				currentState = 3;
-				state = 3;
+			end 
+			else if(currentState == 1) begin //Sâkt Spçli
+				currentState = 2;
+				state = 2;
+				
+				//Laika uzstâdîğana == min(totaltime-(2*lîm),3)
+				calculatedTime = totalTime - (2 * currentLevel);
+				if (calculatedTime > 3) time_v = calculatedTime;
+				else time_v = 3;
+				time_f = 1;
+				
+				//Generate number
+				g_enable = 1;
+			end 
+			else if(currentState == 2) begin //Iegût rezultâtu
+				if(cmp_r && !end_f)
+				begin //Pareizi un laiks nav beidzies.
+					currentLevel = currentLevel + 1;
+					level = currentLevel + 1;
+					
+					currentState = 1;
+					state = 1;
+				end else begin //Nepareizi 
+					currentState = 3;
+					state = 3;
+				end
 			end
-		end
-		else if(currentState == 3) begin //Lûzeris
-			//Generate number
-			g_enable = 0;
-		
-			currentState = 1;
-			state = 1;
+			else if(currentState == 3) begin //Lûzeris
+				//Generate number
+				g_enable = 0;
 			
-			currentLevel = 1;
-			level = 1;
+				currentState = 1;
+				state = 1;
+				
+				currentLevel = 1;
+				level = 1;
+			end
+		end 
+		else if(end_f) begin ////Laiks beidzies
+			//level = currentLevel;
+	
+			currentState = 3;
+			state = 3;
 		end
-	end
-	
-	always@(posedge end_f) begin //Laiks beidzies
-		level = currentLevel;
-	
-		currentState = 3;
-		state = 3;
 	end
 endmodule
