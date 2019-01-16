@@ -25,8 +25,8 @@ module Generators(
     );
 	 //input clk;
 	 input enable;
-	 output reg [0:3] result = 0;
-	 reg [0:3] last_result = 0;
+	 output reg [3:0] result = 0;
+	 reg [3:0] last_result = 0;
 	 
 	 always @ (posedge enable) begin
 		while(result == last_result) begin

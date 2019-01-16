@@ -25,8 +25,8 @@ module Salidzinatajs(
 		match 
     );
 	 
-	 input [0:3] num_1;
-	 input [0:3] num_2;
+	 input [3:0] num_1;
+	 input [3:0] num_2;
 	 output match;
 	 
 	 assign match = num_1 == num_2;

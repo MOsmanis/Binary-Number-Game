@@ -24,29 +24,34 @@ module Binaru_Skaitlu_Spele(
 	IN_GLOBAL_button_north,
 	IN_GLOBAL_button_west,
 	IN_GLOBAL_button_south,
-	IN_GLOBAL_button_east
+	IN_GLOBAL_button_east,
+	TEST_STATE_OUT
 );
 	input IN_GLOBAL_clk;
-	input [0:3]IN_GLOBAL_switch;
+	input [3:0]IN_GLOBAL_switch;
 	input IN_GLOBAL_button_north;
 	input IN_GLOBAL_button_west;
 	input IN_GLOBAL_button_south; 
 	input IN_GLOBAL_button_east;
 
-	wire [0:4]OUT_Timer_timeleft; 
+	wire [4:0]OUT_Timer_timeleft; 
 	wire OUT_Timer_end_f;
 	
-	wire [0:7]OUT_Logic_level;
-	wire [0:1]OUT_Logic_state; 
+	wire [7:0]OUT_Logic_level;
+	wire [1:0]OUT_Logic_state; 
 	wire OUT_Logic_time_f;
-	wire [0:4]OUT_Logic_time_v;
+	wire [4:0]OUT_Logic_time_v;
 	wire OUT_Logic_g_enable;
 	
-	wire [0:3]OUT_Generator_result;
+	wire [3:0]OUT_Generator_result;
 	
 	wire OUT_Match_match;
 	
 	wire OUT_Button_out;
+	
+	output TEST_STATE_OUT;
+	
+	assign TEST_STATE_OUT = OUT_Logic_state; 
 	
 	Timer Timer(
 		.clk(IN_GLOBAL_clk),
@@ -86,7 +91,11 @@ module Binaru_Skaitlu_Spele(
 		.btn_west(IN_GLOBAL_button_west),
 		.btn_out(OUT_Button_out)
    );
-
-	//TODO: Add display module
-
+	
+	Displejs Displejs(
+		.game_state(OUT_Logic_state),
+		.g_num(OUT_Generator_result),
+		.timeleft(OUT_Timer_timeleft),
+		.level(OUT_Logic_level)
+    );
 endmodule

@@ -23,17 +23,17 @@ module Speles_Logika(
 		state, level, time_f, time_v, g_enable
     );
 	input guess_b, cmp_r, end_f;
-	output reg [0:1]state;
-	output reg [0:7]level;
+	output reg [1:0]state;
+	output reg [7:0]level;
 	output reg time_f, g_enable; 
-	output reg [0:4]time_v;
+	output reg [4:0]time_v;
 	
-	reg [0:1]currentState;
-	reg [0:7]currentLevel;
-	reg [0:4]totalTime;
+	reg [1:0]currentState;
+	reg [7:0]currentLevel;
+	reg [4:0]totalTime;
 	
 	//Temps
-	reg [0:7] calculatedTime;
+	reg [7:0] calculatedTime;
 	
 	initial begin
     currentLevel = 0;
