@@ -45,6 +45,7 @@ integer    ticks, sys_freq;
 
 initial ticks = 0;
 initial sys_freq = 50000000;
+initial end_f = 0;
 
 // katru reizi, kad iek�ējā pulksteņa signāls no 0 paceļas uz 1
 always @ (posedge clk)

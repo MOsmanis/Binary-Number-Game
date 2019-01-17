@@ -51,7 +51,6 @@ module Speles_Logika(
 	end
 	
 	always@(posedge guess_b) begin
-
 			if(currentState == 0) begin //Sveicinâti
 				currentState = 1;
 				state = 1;
@@ -71,7 +70,7 @@ module Speles_Logika(
 			end 
 			else if(currentState == 2) begin //Iegût rezultâtu
 			
-				if(cmp_r)
+			if(cmp_r)
 				begin //Pareizi un laiks nav beidzies.
 					currentLevel = currentLevel + 1;
 					level = currentLevel + 1;
@@ -93,6 +92,9 @@ module Speles_Logika(
 				currentLevel = 1;
 				level = 1;
 			end
-
+	end
+	
+	always@(posedge end_f) begin
+		//Clock cant reference 2 variables
 	end
 endmodule
