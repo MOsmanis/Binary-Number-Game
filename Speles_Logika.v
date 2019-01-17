@@ -47,11 +47,11 @@ module Speles_Logika(
 	 time_f = 0;
 	 time_v = 30;
 	 
-	 g_enable = 0;
+	 g_enable = 1;
 	end
 	
-	always@(posedge guess_b or posedge end_f) begin
-		if(guess_b) begin //Nospiesta poga
+	always@(posedge guess_b) begin
+
 			if(currentState == 0) begin //Sveicinâti
 				currentState = 1;
 				state = 1;
@@ -66,11 +66,12 @@ module Speles_Logika(
 				else time_v = 3;
 				time_f = 1;
 				
-				//Generate number
-				g_enable = 1;
+				//Stop generator
+				g_enable = 0;
 			end 
 			else if(currentState == 2) begin //Iegût rezultâtu
-				if(cmp_r && !end_f)
+			
+				if(cmp_r)
 				begin //Pareizi un laiks nav beidzies.
 					currentLevel = currentLevel + 1;
 					level = currentLevel + 1;
@@ -81,23 +82,17 @@ module Speles_Logika(
 					currentState = 3;
 					state = 3;
 				end
+				
+				//Start generator
+				g_enable = 1;
 			end
 			else if(currentState == 3) begin //Lûzeris
-				//Generate number
-				g_enable = 0;
-			
 				currentState = 1;
 				state = 1;
 				
 				currentLevel = 1;
 				level = 1;
 			end
-		end 
-		else if(end_f) begin ////Laiks beidzies
-			//level = currentLevel;
-	
-			currentState = 3;
-			state = 3;
-		end
+
 	end
 endmodule
