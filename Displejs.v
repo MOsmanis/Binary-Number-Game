@@ -33,21 +33,19 @@ module Displejs(
 		b,
 		a
     );
-	 
 	 input [1:0] game_state;
 	 input [3:0] g_num;
 	 input [4:0] timeleft;
 	 input [7:0] level;
-	 
-	 (* LOC = "C9" *) input clk; //50-MHz
-	 (* LOC = "D16" *) output reg sf_e; // 1 - LCD pieeja (0 = StrataFlash pieeja)
-	 (* LOC = "M18" *) output reg e; // Enable - 1
-	 (* LOC = "L18" *) output reg rs; //Register Select (1 prieks Read and Write)
-	 (* LOC = "L17" *) output reg rw; //Read and Write
-	 (* LOC = "M15" *) output reg d; //ceturtais bits (lai izveidotu nibble)
-	 (* LOC = "P17" *) output reg c; //tresais bits (lai izveidotu nibble)
-	 (* LOC = "R16" *) output reg b; //otrais bits (lai izveidotu nibble)
-	 (* LOC = "R15" *) output reg a; //pirmais bits (lai izveidotu nibble)
+	 input clk; //50-MHz
+	 output reg sf_e; // 1 - LCD pieeja (0 = StrataFlash pieeja)
+	 output reg e; // Enable - 1
+	 output reg rs; //Register Select (1 prieks Read and Write)
+	 output reg rw; //Read and Write
+	 output reg d; //ceturtais bits (lai izveidotu nibble)
+	 output reg c; //tresais bits (lai izveidotu nibble)
+	 output reg b; //otrais bits (lai izveidotu nibble)
+	 output reg a; //pirmais bits (lai izveidotu nibble)
 	 
 	 /*reg [ 18 : 0 ] count = 0;
 	 reg [ 6 : 0 ] message_count;
@@ -72,20 +70,33 @@ module Displejs(
 	 reg reset_timer=1;
 	 reg flag_1=0,flag_2=0,flag_12=0,flag_50=0,flag_2k=0,flag_5k=0,flag_82k=0,flag_205k=0,flag_750k=0;
 	 reg gatavs=0;
-	 /*reg [ 5 : 0 ] current_state_nibbles[ 6 : 0 ];
-	 reg [ 1 : 0 ] states[ 6 : 0 ];*/
-	 reg [ 2 : 0 ] nibbles_size = 66;
-	 reg [ 2 : 0 ] game_state_1_size = 68;
 	 reg [ 5 : 0 ] game_state_1 [ 67 : 0 ];
-	 reg [ 5 : 0 ] game_state_2 [ 3 : 0 ];
-	 reg [ 5 : 0 ] game_state_3 [ 3 : 0 ];
-	 reg [ 5 : 0 ] game_state_4 [ 3 : 0 ];
+	 reg [ 5 : 0 ] game_state_2 [ 67 : 0 ];
+	 reg [ 5 : 0 ] game_state_3 [ 67 : 0 ];
+	 reg [ 5 : 0 ] game_state_4 [ 67 : 0 ];
 	 reg [ 6 : 0 ] game_state_index =0;
+	 reg [ 5 : 0 ] game_state_2_addresses [1:0];
+	 reg [ 5 : 0 ] game_state_3_addresses [3:0];
+	 reg [ 5 : 0 ] game_state_4_addresses [1:0];
 	 reg init_game_states=1;
 	 reg game_state_changed=0;
+	 reg [ 2 : 0 ] game_state_loc =10;//neeksistejoss stavoklis lai to nomainitu
+	 reg game_state_printed=0;
 	 integer i;
-	 always@(game_state)begin
-		game_state_changed=1;
+	 always@(posedge clk)begin
+		if(game_state!=game_state_loc && game_state_changed==0)
+		begin
+			game_state_loc <= game_state;
+			game_state_changed<=1;
+		end
+		else
+		begin
+			if(game_state_printed)
+			begin
+				game_state_changed<=0;
+			end
+		end
+		
 	 end
 	 always@(posedge clk) begin
 			if(init_game_states)
@@ -162,78 +173,416 @@ module Displejs(
 					endcase
 					
 				end
-				for (i=0; i<4; i=i+1) begin
+				for (i=0; i<68; i=i+1) begin
 					case(i)
 						0:game_state_2[0]<=6'b000000;/*noliek kursoru ekrana sakuma*/
 						1:game_state_2[1]<=6'b000010;
-						2:game_state_2[2]<=6'b100011;/*2*/
-						3:game_state_2[3]<=6'b100010;
+						2:game_state_2[2]<=6'b100100;/*N*/
+						3:game_state_2[3]<=6'b101110;
+						4:game_state_2[4]<=6'b100110;/*a*/
+						5:game_state_2[5]<=6'b100001;
+						6:game_state_2[6]<=6'b100110;/*k*/
+						7:game_state_2[7]<=6'b101011;
+						8:game_state_2[8]<=6'b100110;/*a*/
+						9:game_state_2[9]<=6'b100001;
+						10:game_state_2[10]<=6'b100110;/*m*/
+						11:game_state_2[11]<=6'b101101;
+						12:game_state_2[12]<=6'b100110;/*a*/
+						13:game_state_2[13]<=6'b100001;
+						14:game_state_2[14]<=6'b100110;/*i*/
+						15:game_state_2[15]<=6'b101001;
+						16:game_state_2[16]<=6'b100110;/*s*/
+						17:game_state_2[17]<=6'b100011;
+						18:game_state_2[18]<=6'b100010;/* */
+						19:game_state_2[19]<=6'b100000;
+						20:game_state_2[20]<=6'b100110;/*l*/
+						21:game_state_2[21]<=6'b101100;
+						22:game_state_2[22]<=6'b100110;/*i*/
+						23:game_state_2[23]<=6'b101001;
+						24:game_state_2[24]<=6'b100110;/*m*/
+						25:game_state_2[25]<=6'b101101;
+						26:game_state_2[26]<=6'b100010;/*.*/
+						27:game_state_2[27]<=6'b101110;
+						28:game_state_2[28]<=6'b100010;/* */
+						29:game_state_2[29]<=6'b100000;
+						30:game_state_2[30]<=6'b100010;/* */
+						31:game_state_2[31]<=6'b100000;
+						32:game_state_2[32]<=6'b100010;/* */
+						33:game_state_2[33]<=6'b100000;
+						34:game_state_2[34]<=6'b001100;/*noliek kursoru otraja linija*/
+						35:game_state_2[35]<=6'b000000;
+						36:game_state_2[36]<=6'b100011;/*<*/
+						37:game_state_2[37]<=6'b101100;
+						38:game_state_2[38]<=6'b100101;/*S*/
+						39:game_state_2[39]<=6'b100011;
+						40:game_state_2[40]<=6'b100110;/*a*/
+						41:game_state_2[41]<=6'b100001;
+						42:game_state_2[42]<=6'b100110;/*k*/
+						43:game_state_2[43]<=6'b101011;
+						44:game_state_2[44]<=6'b100111;/*t*/
+						45:game_state_2[45]<=6'b100100;
+						46:game_state_2[46]<=6'b100010;/* */
+						47:game_state_2[47]<=6'b100000;
+						48:game_state_2[48]<=6'b100010;/* */
+						49:game_state_2[49]<=6'b100000;
+						50:game_state_2[50]<=6'b100010;/* */
+						51:game_state_2[51]<=6'b100000;
+						52:game_state_2[52]<=6'b100010;/* */
+						53:game_state_2[53]<=6'b100000;
+						54:game_state_2[54]<=6'b100010;/* */
+						55:game_state_2[55]<=6'b100000;
+						56:game_state_2[56]<=6'b100010;/* */
+						57:game_state_2[57]<=6'b100000;
+						58:game_state_2[58]<=6'b100010;/* */
+						59:game_state_2[59]<=6'b100000;
+						60:game_state_2[60]<=6'b100010;/* */
+						61:game_state_2[61]<=6'b100000;
+						62:game_state_2[62]<=6'b100010;/* */
+						63:game_state_2[63]<=6'b100000;
+						64:game_state_2[64]<=6'b100010;/* */
+						65:game_state_2[65]<=6'b100000;
+						66:game_state_2[66]<=6'b100010;/* */
+						67:game_state_2[67]<=6'b100000;
 					endcase
+					
 				end
-				for (i=0; i<4; i=i+1) begin
+				for (i=0; i<68; i=i+1) begin
 					case(i)
 						0:game_state_3[0]<=6'b000000;/*noliek kursoru ekrana sakuma*/
 						1:game_state_3[1]<=6'b000010;
-						2:game_state_3[2]<=6'b100011;/*3*/
-						3:game_state_3[3]<=6'b100011;
+						2:game_state_3[2]<=6'b100100;/*D*/
+						3:game_state_3[3]<=6'b100100;
+						4:game_state_3[4]<=6'b100110;/*e*/
+						5:game_state_3[5]<=6'b100101;
+						6:game_state_3[6]<=6'b100110;/*c*/
+						7:game_state_3[7]<=6'b100011;
+						8:game_state_3[8]<=6'b100010;/* */
+						9:game_state_3[9]<=6'b100000;
+						10:game_state_3[10]<=6'b100010;/* */
+						11:game_state_3[11]<=6'b100000;
+						12:game_state_3[12]<=6'b100010;/* */
+						13:game_state_3[13]<=6'b100000;
+						14:game_state_3[14]<=6'b100111;/*|*/
+						15:game_state_3[15]<=6'b101100;
+						16:game_state_3[16]<=6'b100010;/* */
+						17:game_state_3[17]<=6'b100000;
+						18:game_state_3[18]<=6'b100100;/*L*/
+						19:game_state_3[19]<=6'b101100;
+						20:game_state_3[20]<=6'b100110;/*a*/
+						21:game_state_3[21]<=6'b100001;
+						22:game_state_3[22]<=6'b100110;/*i*/
+						23:game_state_3[23]<=6'b101001;
+					   24:game_state_3[24]<=6'b100110;/*k*/
+						25:game_state_3[25]<=6'b101011;
+						26:game_state_3[26]<=6'b100110;/*s*/
+						27:game_state_3[27]<=6'b100011;
+						28:game_state_3[28]<=6'b100010;/* */
+						29:game_state_3[29]<=6'b100000;
+						30:game_state_3[30]<=6'b100010;/* */
+						31:game_state_3[31]<=6'b100000;
+						32:game_state_3[32]<=6'b100010;/* */
+						33:game_state_3[33]<=6'b100000;
+						34:game_state_3[34]<=6'b001100;/*noliek kursoru otraja linija*/
+						35:game_state_3[35]<=6'b000000;
+						36:game_state_3[36]<=6'b100011;/*<*/
+						37:game_state_3[37]<=6'b101100;
+						38:game_state_3[38]<=6'b100100;/*O*/
+						39:game_state_3[39]<=6'b101111;
+						40:game_state_3[40]<=6'b100100;/*K*/
+						41:game_state_3[41]<=6'b101011;
+						42:game_state_3[42]<=6'b100010;/* */
+						43:game_state_3[43]<=6'b100000;
+						44:game_state_3[44]<=6'b100010;/* */
+						45:game_state_3[45]<=6'b100000;
+						46:game_state_3[46]<=6'b100010;/* */
+						47:game_state_3[47]<=6'b100000;
+						48:game_state_3[48]<=6'b100111;/*|*/
+						49:game_state_3[49]<=6'b101100;
+						50:game_state_3[50]<=6'b100010;/* */
+						51:game_state_3[51]<=6'b100000;
+						52:game_state_3[52]<=6'b100010;/* */
+						53:game_state_3[53]<=6'b100000;
+						54:game_state_3[54]<=6'b100100;/*I*/
+						55:game_state_3[55]<=6'b101001;
+						56:game_state_3[56]<=6'b100110;/*e*/
+						57:game_state_3[57]<=6'b100101;
+						58:game_state_3[58]<=6'b100111;/*v*/
+						59:game_state_3[59]<=6'b100110;
+						60:game_state_3[60]<=6'b100110;/*a*/
+						61:game_state_3[61]<=6'b100001;
+						62:game_state_3[62]<=6'b100110;/*d*/
+						63:game_state_3[63]<=6'b100100;
+						64:game_state_3[64]<=6'b100110;/*s*/
+						64:game_state_3[65]<=6'b100011;
+						66:game_state_3[66]<=6'b100011;/*>*/
+						67:game_state_3[67]<=6'b101110;
 					endcase
 				end
-				for (i=0; i<4; i=i+1) begin
+				for (i=0; i<68; i=i+1) begin
 					case(i)
 						0:game_state_4[0]<=6'b000000;/*noliek kursoru ekrana sakuma*/
 						1:game_state_4[1]<=6'b000010;
-						2:game_state_4[2]<=6'b100011;/*4*/
-						3:game_state_4[3]<=6'b100100;
+						2:game_state_4[2]<=6'b100010;/* */
+						3:game_state_4[3]<=6'b100000;
+						4:game_state_4[4]<=6'b100101;/*S*/
+						5:game_state_4[5]<=6'b100011;
+						6:game_state_4[6]<=6'b100111;/*p*/
+						7:game_state_4[7]<=6'b100000;
+						8:game_state_4[8]<=6'b100110;/*e*/
+						9:game_state_4[9]<=6'b100101;
+						10:game_state_4[10]<=6'b100110;/*l*/
+						11:game_state_4[11]<=6'b101100;
+						12:game_state_4[12]<=6'b100110;/*e*/
+						13:game_state_4[13]<=6'b100101;
+						14:game_state_4[14]<=6'b100110;/*s*/
+						15:game_state_4[15]<=6'b100011;
+						16:game_state_4[16]<=6'b100010;/* */
+						17:game_state_4[17]<=6'b100000;
+						18:game_state_4[18]<=6'b100110;/*b*/
+						19:game_state_4[19]<=6'b100010;
+						20:game_state_4[20]<=6'b100110;/*e*/
+						21:game_state_4[21]<=6'b100101;
+						22:game_state_4[22]<=6'b100110;/*i*/
+						23:game_state_4[23]<=6'b101001;
+						24:game_state_4[24]<=6'b100110;/*g*/
+						25:game_state_4[25]<=6'b100111;
+						26:game_state_4[26]<=6'b100110;/*a*/
+						27:game_state_4[27]<=6'b100001;
+						28:game_state_4[28]<=6'b100110;/*s*/
+						29:game_state_4[29]<=6'b100011;
+						30:game_state_4[30]<=6'b100010;/*!*/
+						31:game_state_4[31]<=6'b100001;
+						32:game_state_4[32]<=6'b100010;/* */
+						33:game_state_4[33]<=6'b100000;
+						34:game_state_4[34]<=6'b001100;/*noliek kursoru otraja linija*/
+						35:game_state_4[35]<=6'b000000;
+						36:game_state_4[36]<=6'b100011;/*<*/
+						37:game_state_4[37]<=6'b101100;
+						38:game_state_4[38]<=6'b100100;/*O*/
+						39:game_state_4[39]<=6'b101111;
+						40:game_state_4[40]<=6'b100100;/*K*/
+						41:game_state_4[41]<=6'b101011;
+						42:game_state_4[42]<=6'b100010;/* */
+						43:game_state_4[43]<=6'b100000;
+						44:game_state_4[44]<=6'b100010;/* */
+						45:game_state_4[45]<=6'b100000;
+						46:game_state_4[46]<=6'b100010;/* */
+						47:game_state_4[47]<=6'b100000;
+						48:game_state_4[48]<=6'b100111;/*|*/
+						49:game_state_4[49]<=6'b101100;
+						50:game_state_4[50]<=6'b100101;/*P*/
+						51:game_state_4[51]<=6'b100000;
+						52:game_state_4[52]<=6'b100111;/*u*/
+						53:game_state_4[53]<=6'b100101;
+						54:game_state_4[54]<=6'b100110;/*n*/
+						55:game_state_4[55]<=6'b101110;
+					   56:game_state_4[56]<=6'b100110;/*k*/
+						57:game_state_4[57]<=6'b101011;
+						58:game_state_4[58]<=6'b100111;/*t*/
+						59:game_state_4[59]<=6'b100100;
+						60:game_state_4[60]<=6'b100110;/*i*/
+						61:game_state_4[61]<=6'b101001;
+						62:game_state_4[62]<=6'b100010;/* */
+						63:game_state_4[63]<=6'b100000;
+						64:game_state_4[64]<=6'b100010;/* */
+						65:game_state_4[65]<=6'b100000;
+						66:game_state_4[66]<=6'b100010;/* */
+						67:game_state_4[67]<=6'b100000;
+					endcase
+				end
+				for (i=0; i<2; i=i+1) begin
+					case(i)//vispirms vieta pa kreisi, tad var uzreiz rakstit pa labi
+						0: game_state_2_addresses[0] <= 6'b001000;
+						1: game_state_2_addresses[1] <= 6'b001110;
+					endcase
+				end
+				for (i=0;i<4;i=i+1) begin
+					case(i)//vispirms vieta pa kreisi, tad var uzreiz rakstit pa labi
+						0: game_state_3_addresses[0] <= 6'b001000;
+						1: game_state_3_addresses[1] <= 6'b001110;
+						2: game_state_3_addresses[2] <= 6'b001000;
+						3: game_state_3_addresses[3] <= 6'b000100;
+					endcase
+				end
+				for (i=0;i<2;i=i+1) begin
+					case(i)//vispirms vieta pa kreisi, tad var uzreiz rakstit pa labi
+						0: game_state_4_addresses[0] <= 6'b001100;
+						1: game_state_4_addresses[1] <= 6'b001110;
 					endcase
 				end
 				init_game_states<=0;
 	 end
 	 always@(posedge clk) begin
-		if (gatavs==1 && read_next_nibbles==0 && init_game_states==0 && game_state_changed)
+		if (gatavs==1 && read_next_nibbles==0 && init_game_states==0 && game_state_changed==1 && game_state_index<68)
 		begin
-			case(game_state)
+			game_state_printed<=0;
+			case(game_state_loc)
 				0: begin
+						//sakt speli
 						if(game_state_index<68)
 						begin
 						 next_upper_nibble <= game_state_1[game_state_index];
 						 next_lower_nibble <= game_state_1[game_state_index + 1];
 						 game_state_index <= game_state_index + 2;
 						 read_next_nibbles <= 1;
-						 $display("nibbles_size=%d,upper=%b , lower %b", nibbles_size, next_upper_nibble, next_lower_nibble);
+						 $display("Next nibbles: upper=%b , lower %b", next_upper_nibble, next_lower_nibble);
 						end
 					end
 				1: begin
-						if(game_state_index<4)
+						//nakamais lvl
+						if(game_state_index<68)
 						begin
 						 next_upper_nibble <= game_state_2[game_state_index];
 						 next_lower_nibble <= game_state_2[game_state_index + 1];
 						 game_state_index <= game_state_index + 2;
 						 read_next_nibbles <= 1;
 						end
+						/*else if(game_state_index<71)
+						begin
+							case(game_state_index)
+							68:begin
+								next_upper_nibble <= game_state_2_addresses[0];
+								next_lower_nibble <= game_state_2_addresses[1];
+								game_state_index <= game_state_index + 1;
+								read_next_nibbles <= 1;
+								end//uzstada adresi kur rakstit limeni
+							69:begin//ieraksta skaitla desmitu pirmaja suna
+									if (level<10)
+									begin//pirmaa ieraksta tuksumu
+										next_upper_nibble <= 6'b100010;
+										next_lower_nibble <= 6'b100000;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+									end//pirmaa ieraksta 1
+									if (level>=10 && level<20)
+									begin
+										next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b100001;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+									end//pirmaa ieraksta 2
+									if (level>=20 && level<30)
+									begin
+									`	next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b100010;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+									end
+									else//ieraksta 0
+									begin
+										next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b100000;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+									end
+								end*/
+							//70:/*begin
+									//if(level<10)
+									//begin
+										/*case(level)
+											0:begin
+												next_upper_nibble <= 6'b100011;
+												next_lower_nibble <= 6'b100000;
+												game_state_index <= game_state_index + 1;
+												read_next_nibbles <= 1;
+											end
+											1:begin
+												next_upper_nibble <= 6'b100011;
+												next_lower_nibble <= 6'b100001;
+												game_state_index <= game_state_index + 1;
+												read_next_nibbles <= 1;
+											end
+											2:begin
+									`			next_upper_nibble <= 6'b100011;
+												next_lower_nibble <= 6'b100010;
+												game_state_index <= game_state_index + 1;
+												ead_next_nibbles <= 1;
+												end
+											3:begin
+									`	next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b100011;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+											end
+											4:
+											begin
+									`	next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b100100;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+										end
+											5:
+											begin
+									`	next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b100101;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+											end
+											6:
+											begin
+									`	next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b100110;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+											end
+											7:
+											begin
+									`	next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b100111;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+											end
+											8:
+											begin
+									`	next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b101000;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+											end
+											9: begin
+									`	next_upper_nibble <= 6'b100011;
+										next_lower_nibble <= 6'b101001;
+										game_state_index <= game_state_index + 1;
+										read_next_nibbles <= 1;
+											end
+										endcase*/
+						/*end
+						end*/
+					//endcase	
+						//izdruka limeni?
+					//end
 					end
-				2:	begin
-					if(game_state_index<4)
+				2:	begin //limenis
+					if(game_state_index<68)
 						begin
 						 next_upper_nibble <= game_state_3[game_state_index];
 						 next_lower_nibble <= game_state_3[game_state_index + 1];
 						 game_state_index <= game_state_index + 2;
 						 read_next_nibbles <= 1;
 						end
+						//izdruka skaitli + taimeri?
 				end
-				3: begin
-					if(game_state_index<4)
+				3: begin //speles beigas
+					if(game_state_index<68)
 						begin
 						 next_upper_nibble <= game_state_4[game_state_index];
 						 next_lower_nibble <= game_state_4[game_state_index + 1];
 						 game_state_index <= game_state_index + 2;
 						 read_next_nibbles <= 1;
 						end
+						//izdruka limeni
 				end
 				endcase
+				
 		end
 		else
 		begin
 			read_next_nibbles<=0;
+			if(game_state_index>=68)
+			begin
+				game_state_printed<=1;
+				game_state_index<=0;
+			end
 		end
 	 end
 	 always @(posedge clk) begin
